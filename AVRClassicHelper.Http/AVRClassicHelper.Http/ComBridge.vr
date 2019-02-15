@@ -1,0 +1,46 @@
+﻿Using System
+Using System.Text
+Using System.Runtime.InteropServices
+
+DclNameSpace AVRClassicHelper.Http 
+
+BegClass ComBridge Access(*Public)  +
+                   Attributes(ComVisible(*True), +
+                   ClassInterface(ClassInterfaceType.AutoDual))
+
+    DclProp HTTPStatus Type(*Integer4) Access(*Public)
+    DclProp ErrorMessage Type(*String) Access(*Public)
+    DclArray Users Type(User) Rank(1) Access(*Public) Attributes(ComVisible(*False)) 
+    
+    BegFunc CallGet Access(*Public) Type(*Integer4) 
+        DclSrParm Url Type(*String) 
+
+        DclFld Req Type(AVRClassicHelper.Http.Request) New() 
+        Users = Req.GetJson(Url)       
+        
+        *This.HTTPStatus = Req.HTTPStatus
+        *This.ErrorMessage = Req.ErrorMessage
+
+        If Req.HTTPStatus = 200 
+            LeaveSr Users.Length
+        EndIf 
+
+        Users = *Nothing 
+        LeaveSr -1 
+    EndFunc 
+
+    BegFunc GetUser Access(*Public) Type(User) Attributes(ComVisible(*True))
+        DclSrParm Index Type(*Integer4) 
+
+        If Users = *Nothing 
+            LeaveSr *Nothing 
+        EndIf 
+
+        If Index > Users.Length - 1 
+            LeaveSr *Nothing
+        Else 
+            LeaveSr Users[Index]
+        EndIf 
+    EndFunc  
+
+EndClass

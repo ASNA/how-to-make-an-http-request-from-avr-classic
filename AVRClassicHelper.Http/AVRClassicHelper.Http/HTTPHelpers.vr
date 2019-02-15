@@ -1,0 +1,78 @@
+﻿Using System
+Using System.IO
+Using System.Text 
+Using System.Web
+Using System.Net 
+Using NewtonSoft.Json
+
+DclNameSpace AVRClassicHelper.Http 
+
+BegClass Request Access(*Public)
+    DclProp HTTPStatus Type(*Integer4) Access(*Public) 
+    DclProp ErrorMessage Type(*String) Access(*Public) 
+
+    BegFunc GetRequest Type(*String) Access(*Public) 
+        DclSrParm Url      Type(*String) 
+        
+        DclFld encoding        Type(ASCIIEncoding) New()
+        DclFld req             Type(HttpWebRequest) 
+        DclFld res             Type(HttpWebResponse) 
+        DclFld responseStream  Type(Stream) 
+        DclFld responseString  Type(*String) 
+        DclFld sr              Type(StreamReader) 
+       
+        req = WebRequest.Create(Url) *As HttpWebRequest         
+        req.Method = "GET"
+
+        Try
+            res = req.GetResponse() *As HttpWebResponse
+            *This.HTTPStatus = res.StatusCode
+            *This.ErrorMessage = String.Empty
+
+        Catch ex1 Type(WebException)
+            If ex1.Status <> WebExceptionStatus.Success
+                res = ex1.Response *As HttpWebResponse 
+                *This.HTTPStatus = res.StatusCode
+                *This.ErrorMessage = ex1.Message 
+                LeaveSr *Nothing 
+            EndIf 
+
+        Catch ex2 Type(Exception) 
+            *This.HTTPStatus = 0
+            *This.ErrorMessage = ex2.Message 
+            LeaveSr *Nothing 
+        EndTry 
+
+        If (res.StatusCode = HttpStatusCode.OK)
+            responseStream = res.GetResponseStream()
+            sr = *New StreamReader(responseStream) 
+            responseString = sr.ReadToEnd() 
+            sr.Close()
+        Else 
+            *This.HTTPStatus = 0
+            *This.ErrorMessage = res.StatusDescription
+            LeaveSr *Nothing 
+        EndIf
+        
+        LeaveSr responseString 
+    EndFunc                 
+
+    BegFunc GetJson Access(*Public) Type(User) Rank(1)
+        DclSrParm Url Type(String) 
+        DclFld JsonString Type(*String) 
+        
+        DclArray UserList Type(User) Rank(1) 
+
+        JsonString = GetRequest(Url)         
+        If *This.HTTPStatus = 200 
+            UserList = JsonConvert.DeserializeObject(JsonString, +
+                                *TypeOf(User[])) *As User[]
+            LeaveSr UserList 
+        Else 
+            LeaveSr *Nothing 
+        EndIf 
+    EndFunc 
+
+EndClass
+
+

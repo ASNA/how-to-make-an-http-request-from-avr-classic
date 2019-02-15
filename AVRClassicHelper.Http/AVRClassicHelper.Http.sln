@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{A99171F4-43ED-48FC-978B-9193EDE4E466}") = "AVRClassicHelper.Http", "AVRClassicHelper.Http\AVRClassicHelper.Http.vrproj", "{796ABCC5-368C-42BC-988F-FA300819B791}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{796ABCC5-368C-42BC-988F-FA300819B791}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{796ABCC5-368C-42BC-988F-FA300819B791}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{796ABCC5-368C-42BC-988F-FA300819B791}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{796ABCC5-368C-42BC-988F-FA300819B791}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

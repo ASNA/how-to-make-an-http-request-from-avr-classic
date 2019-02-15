@@ -1,0 +1,39 @@
+﻿Using System.Runtime.InteropServices
+
+DclNameSpace AVRClassicHelper.Http 
+
+BegClass User Access(*Public) Attributes(ComVisible(*True), +
+                           ClassInterface(ClassInterfaceType.AutoDual))
+    DclProp id Type(*String) Access(*Public) 
+    DclProp name Type(*String) Access(*Public) 
+    DclProp username Type(*String) Access(*Public) 
+    DclProp email Type(*String) Access(*Public) 
+    DclProp address Type(AddressInfo) Access(*Public) 
+    DclProp phone Type(*String) Access(*Public) 
+    DclProp website Type(*String) Access(*Public) 
+    DclProp company Type(CompanyInfo) Access(*Public) 
+EndClass
+
+BegClass AddressInfo Access(*Public) Attributes(ComVisible(*True), +
+                             ClassInterface(ClassInterfaceType.AutoDual))
+    DclProp street Type(*String) Access(*Public) 
+    DclProp suite Type(*String) Access(*Public) 
+    DclProp city Type(*String) Access(*Public) 
+    DclProp zipcode Type(*String) Access(*Public) 
+    DclProp geo Type(GeoInfo) Access(*Public) 
+EndClass
+
+BegClass GeoInfo Access(*Public) Attributes(ComVisible(*True), +
+                         ClassInterface(ClassInterfaceType.AutoDual))
+    DclProp lat Type(*String) Access(*Public) 
+    DclProp lng Type(*String) Access(*Public) 
+EndClass
+
+BegClass CompanyInfo Access(*Public) Attributes(ComVisible(*True), + 
+                             ClassInterface(ClassInterfaceType.AutoDual))
+    DclProp name Type(*String) Access(*Public) 
+    DclProp catchphrase Type(*String) Access(*Public) 
+    DclProp bs Type(*String) Access(*Public) 
+EndClass
+
+
