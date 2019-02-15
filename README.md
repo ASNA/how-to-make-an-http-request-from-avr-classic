@@ -18,7 +18,7 @@ Let's start with a preview of the results. The image below shows an AVR Classic 
 
 ### The Json data
 
-First we need some Json test data. The [JSONPlaceholder](https://jsonplaceholder.typicode.com/) site provides several different Json test documents. This article uses its [`users` Json document](https://jsonplaceholder.typicode.com/users). This URL provides ficticious Json data about 10 users and a fragment of it is shown below in Figure 1. 
+First we need some Json test data. The [JSONPlaceholder](https://jsonplaceholder.typicode.com/) site provides several different Json test documents. This article uses its [`users` Json document](https://jsonplaceholder.typicode.com/users). This URL provides ficticious Json data for 10 users and a fragment of it is shown below in Figure 1. 
 
 ![](https://asna.com/filebin/marketing/article-figures/avr-classic-json/json-data.png)
 
@@ -391,4 +391,4 @@ We've been doing HTTP work with AVR for .NET for a long time and have always use
             
 <small>Figure B. The RestSharp equivalent of Figure A.</small>
 
-The RestSharp API is comprehensive and features for authentication and serialization baked in. It looks like a promising API for .NET HTTP work.
+The RestSharp API is comprehensive and has features for authentication and serialization baked in. It looks like a promising API for .NET HTTP work.
